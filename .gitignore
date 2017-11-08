@@ -40,5 +40,5 @@ Release
 ipch
 *sdf
 *.vcxproj
-*.Browse.VC.db
-*.Browse.VC.opendb
+*.db
+*.opendb
