@@ -40,5 +40,5 @@ Release
 ipch
 *sdf
 *.vcxproj
-Co-Optional Doodling/.vs/Co-Optional Doodling/v15/Browse.VC.opendb
-Co-Optional Doodling/.vs/Co-Optional Doodling/v15/Browse.VC.db
+*.Browse.VC.db
+*.Browse.VC.opendb
