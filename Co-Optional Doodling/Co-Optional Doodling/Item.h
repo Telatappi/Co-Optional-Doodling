@@ -16,8 +16,7 @@ public:
 	void SetAccuracy(unsigned int accuracy);
 	void SetAttack(unsigned int attack);
 	void SetType(std::string type);
-
-
+	
 	std::string GetName();
 	unsigned int GetHp();
 	unsigned int GetAgility();
@@ -28,12 +27,12 @@ public:
 	std::string GetType();
 private:
 	std::string m_name;
-	unsigned int m_hp = 0;
-	unsigned int m_agility = 0;
-	unsigned int m_luck = 0;
-	unsigned int m_wisdom = 0;
-	unsigned int m_accuracy = 0;
-	unsigned int m_attack = 0;
+	unsigned int m_hp;
+	unsigned int m_agility;
+	unsigned int m_luck;
+	unsigned int m_wisdom;
+	unsigned int m_accuracy;
+	unsigned int m_attack;
 	std::string m_type;
 };
 #endif

@@ -1,6 +1,14 @@
 #include "Item.h"
 
 Item::Item()
+	:m_name(""),
+	m_hp(0),
+	m_agility(0),
+	m_luck(0),
+	m_wisdom(0),
+	m_accuracy(0),
+	m_attack(0),
+	m_type("")
 {
 }
 
@@ -10,7 +18,7 @@ Item::~Item()
 
 void Item::SetName(std::string _name)
 {
-	m_name = _name
+	m_name = _name;
 }
 
 void Item::SetHp(unsigned int _hp)
@@ -40,7 +48,7 @@ void Item::SetAccuracy(unsigned int _accuracy)
 
 void Item::SetAttack(unsigned int _attack)
 {
-	m_attack = _attack
+	m_attack = _attack;
 }
 
 void Item::SetType(std::string _type)

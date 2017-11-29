@@ -2,6 +2,7 @@
 #include "SceneManager.h"
 #include "Scene.h"
 #include "Core.h"
+
 SceneManager::SceneManager()
 {
 }
@@ -69,7 +70,7 @@ void SceneManager::NextRandomScene(core::Location _previousLocation, core::Locat
 
 	//Find the scene we selected
 	int rng = core::Rand(0, randomTotal);
-	for (int i = 0; i < m_scenes.size(); ++i)
+	for (unsigned int i = 0; i < m_scenes.size(); ++i)
 	{
 		if (scenes[i] == 0)
 		{

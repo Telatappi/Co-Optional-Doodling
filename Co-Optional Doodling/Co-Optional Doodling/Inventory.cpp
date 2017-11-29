@@ -1,14 +1,14 @@
 #include "Inventory.h"
 
-core::Inventory::Inventory()
+Inventory::Inventory()
 {
 }
 
-core::Inventory::~Inventory()
+Inventory::~Inventory()
 {
 }
 
-void core::Inventory::Equip(std::string _itemName, std::string _slotName)
+void Inventory::Equip(std::string _itemName, std::string _slotName)
 {
 	std::vector<Item>::iterator item = m_items.begin();
 	for (; item != m_items.end(); ++item)
@@ -91,7 +91,37 @@ void core::Inventory::Equip(std::string _itemName, std::string _slotName)
 	}
 }
 
-std::vector<Item> core::Inventory::GetItems()
+std::vector<Item> Inventory::GetItems()
 {
 	return m_items;
+}
+
+Item Inventory::Slot(std::string _slotName)
+{
+	Item item;
+	if (_slotName == "helmet")
+	{
+		item = m_slots.helmet;
+	}
+	else if (_slotName == "armor")
+	{
+		item = m_slots.armor;
+	}
+	else if (_slotName == "mHand")
+	{
+		item = m_slots.mHand;
+	}
+	else if (_slotName == "oHand")
+	{
+		item = m_slots.oHand;
+	}
+	else if (_slotName == "misc1")
+	{
+		item = m_slots.misc1;
+	}
+	else if (_slotName == "misc2")
+	{
+		item = m_slots.misc2;
+	}
+	return item;
 }

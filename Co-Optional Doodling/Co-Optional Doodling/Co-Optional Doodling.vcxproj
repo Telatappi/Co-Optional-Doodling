@@ -113,6 +113,7 @@
   <ItemGroup>
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="ExampleScene.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
@@ -122,6 +123,7 @@
   <ItemGroup>
     <ClInclude Include="Character.h" />
     <ClInclude Include="Core.h" />
+    <ClInclude Include="ExampleScene.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Scene.h" />

@@ -6,7 +6,7 @@
 class ExampleScene : Scene
 {
 public:
-	ExampleScene();
+	ExampleScene(SceneManager* sceneManager, std::string name, core::Location location);
 	~ExampleScene();
 	//init this scene
 	void Init();

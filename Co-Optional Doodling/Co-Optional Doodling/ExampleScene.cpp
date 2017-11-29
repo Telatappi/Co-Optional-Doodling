@@ -1,6 +1,7 @@
 #include "ExampleScene.h"
 
-ExampleScene::ExampleScene()
+ExampleScene::ExampleScene(SceneManager* _sceneManager, std::string _name, core::Location _location)
+	:Scene(_sceneManager, _name, _location)
 {
 }
 

@@ -7,28 +7,27 @@
 
 class Item;
 
-namespace core
+struct Slots
 {
-	struct Slots
-	{
-		Item helmet;
-		Item armor;
-		Item mHand;
-		Item oHand;
-		Item misc1;
-		Item misc2;
-	};
+	Item helmet;
+	Item armor;
+	Item mHand;
+	Item oHand;
+	Item misc1;
+	Item misc2;
+};
 
-	class Inventory
-	{
-	public:
-		Inventory();
-		~Inventory();
-		void Equip(std::string itemName, std::string slotName = "");
-		std::vector<Item> GetItems();
-	private:
-		Slots m_slots;
-		std::vector<Item> m_items;
-	};
-}
+class Inventory
+{
+public:
+	Inventory();
+	~Inventory();
+	void Equip(std::string itemName, std::string slotName = "");
+	std::vector<Item> GetItems();
+	Item Slot(std::string slotName);
+private:
+	Slots m_slots;
+	std::vector<Item> m_items;
+};
+
 #endif
