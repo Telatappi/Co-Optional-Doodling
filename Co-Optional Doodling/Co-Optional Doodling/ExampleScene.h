@@ -3,7 +3,7 @@
 
 #include "Scene.h"
 
-class ExampleScene : Scene
+class ExampleScene : public Scene
 {
 public:
 	ExampleScene(SceneManager* sceneManager, std::string name, core::Location location);
@@ -11,7 +11,7 @@ public:
 	//init this scene
 	void Init();
 	//This is where the action happens in a scene
-	void Loop();
+	bool Loop(bool exit);
 	//do something before the scene ends
 	void Uninit();
 private:

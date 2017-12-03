@@ -1,10 +1,14 @@
 #include <algorithm>
 #include "SceneManager.h"
-#include "Scene.h"
 #include "Core.h"
 
+//include your scene here
+#include "ExampleScene.h"
+
 SceneManager::SceneManager()
+	:exit(false)
 {
+	InitScenes();
 }
 
 SceneManager::~SceneManager()
@@ -18,9 +22,9 @@ SceneManager::~SceneManager()
 	}
 }
 
-void SceneManager::LoopActiveScene()
+bool SceneManager::LoopActiveScene()
 {
-	m_activeScene->Loop();
+	return m_activeScene->Loop(exit);
 }
 
 void SceneManager::NextRandomScene(core::Location _previousLocation, core::Location _targetLocation)
@@ -30,9 +34,8 @@ void SceneManager::NextRandomScene(core::Location _previousLocation, core::Locat
 	std::vector<std::string> possibleScenesNames;
 	//tracks individual values of random
 	int* scenes = new int[m_scenes.size()];
-	//fille the scenes array with 0s
+	//fill scenes array with 0s
 	std::fill_n(scenes, m_scenes.size(), 0);
-	//
 	
 	//tracks total value of random
 	int randomTotal = 0;
@@ -83,7 +86,6 @@ void SceneManager::NextRandomScene(core::Location _previousLocation, core::Locat
 			LoadScene(possibleScenesNames[i]);
 		}
 	}
-	delete scenes;
 }
 
 void SceneManager::NextLinkedScene(std::string& _name)
@@ -91,10 +93,26 @@ void SceneManager::NextLinkedScene(std::string& _name)
 	LoadScene(_name);
 }
 
+void SceneManager::InitScenes()
+{
+	//enter scenes here
+	m_scenes.push_back(new ExampleScene(this, "ExampleScene", core::Location::TEMPPELINRAUNIOT));
+}
+
 void SceneManager::LoadScene(std::string& _sceneName)
 {
-	if (_sceneName != "")
+	std::vector<Scene*>::const_iterator scene = m_scenes.begin();
+	for (; scene != m_scenes.end(); ++scene)
 	{
-		//enter scenes here
+		if ((*scene)->GetName() == _sceneName)
+		{
+			if (m_activeScene != nullptr)
+			{
+				m_activeScene->Uninit();
+			}
+			m_activeScene = (*scene);
+			m_activeScene->Init();
+			break;
+		}
 	}
 }

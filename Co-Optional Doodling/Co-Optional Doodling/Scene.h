@@ -28,7 +28,7 @@ public:
 	//init this scene
 	virtual void Init() = 0;
 	//This is where the action happens in a scene
-	virtual void Loop() = 0;
+	virtual bool Loop(bool exit = false) = 0;
 	//do something before the scene ends
 	virtual void Uninit() = 0;
 

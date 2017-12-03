@@ -28,6 +28,7 @@ namespace core
 	void PrintLongTerm(bool clearScreen = true);
 
 	std::string Input();
+	int Char();
 
 	void Text(std::string text);
 
