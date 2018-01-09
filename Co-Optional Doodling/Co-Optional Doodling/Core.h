@@ -13,32 +13,45 @@ static std::random_device rd;
 //used for RNG no need to touch this
 static std::mt19937 rng(rd());
 
-//this will be 
-static std::string textBuffer;
-static std::string longTermTextBuffer;
-
 namespace core
 {
+	enum class COMBAT_OUTCOME
+	{
+		PLAYER_VICTORY,
+		PLAYER_DEATH,
+		PLAYER_ESCAPE
+	};
+
+	enum class CONTROLLER
+	{
+		PLAYER,
+		ENEMY
+	};
+
+	COMBAT_OUTCOME Combat(std::vector<Character> playerCharacters,
+		std::vector<Character> enemies);
+
+	COMBAT_OUTCOME Combat(Character player, Character enemy);
+	COMBAT_OUTCOME Combat(Character player, std::vector<Character> enemies);
+	COMBAT_OUTCOME Combat(std::vector<Character> playerCharacters, Character enemy);
+
 	//game core stuff
 	void InitGame();
 	void PlayerCreation();
 	Character CreateCharacter();
 	
-	void Print(bool clearScreen = false);
-	void PrintLongTerm(bool clearScreen = true);
+	void ClearScreen();
+	void PrintCharacterStats(Character character);
 
-	std::string Input();
-	int Char();
-
-	void Text(std::string text);
-
-	void ClearLongTermTextBuffer();
-
+	//get a string of text from input
+	std::string GetText();
+	//get a single character from input
+	int GetKey();
+	//char GetKey();
+		
 	void ClearScreen();
 
-	//utility functions		
-
-
+	//utility functions
 	int Rand(int min, int max);
 
 	void EnterInventory();
@@ -48,14 +61,11 @@ namespace core
 	//variables
 	extern SceneManager sceneManager;
 	extern Character player;
-
-	class coreDetails
+	
+	enum ITEMS
 	{
-	private:
-		struct details
-		{
-
-		};
+		NO_ITEM_SELECTED,
+		ITEM_SELECTED
 	};
 }
 

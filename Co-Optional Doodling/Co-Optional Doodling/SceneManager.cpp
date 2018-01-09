@@ -6,7 +6,7 @@
 #include "ExampleScene.h"
 
 SceneManager::SceneManager()
-	:exit(false)
+	:m_exit(false)
 {
 	InitScenes();
 }
@@ -24,7 +24,7 @@ SceneManager::~SceneManager()
 
 bool SceneManager::LoopActiveScene()
 {
-	return m_activeScene->Loop(exit);
+	return m_activeScene->Loop(m_exit);
 }
 
 void SceneManager::NextRandomScene(core::Location _previousLocation, core::Location _targetLocation)
@@ -96,6 +96,7 @@ void SceneManager::NextLinkedScene(std::string& _name)
 void SceneManager::InitScenes()
 {
 	//enter scenes here
+	//also main menu needs to be added
 	m_scenes.push_back(new ExampleScene(this, "ExampleScene", core::Location::TEMPPELINRAUNIOT));
 }
 

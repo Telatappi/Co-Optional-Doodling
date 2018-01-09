@@ -18,7 +18,7 @@ private:
 	void LoadScene(std::string& sceneName);
 	Scene* m_activeScene;
 	std::vector<Scene*> m_scenes;
-	bool exit;
+	bool m_exit;
 };
 
 #endif

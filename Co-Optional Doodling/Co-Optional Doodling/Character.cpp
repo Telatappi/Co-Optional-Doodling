@@ -118,3 +118,13 @@ void Character::IncreaseAttack(int _attack)
 {
 	stats.attack += _attack;
 }
+
+void Character::SetController(core::CONTROLLER _controller)
+{
+	m_controller = _controller;
+}
+
+core::CONTROLLER Character::GetController()
+{
+	return m_controller;
+}

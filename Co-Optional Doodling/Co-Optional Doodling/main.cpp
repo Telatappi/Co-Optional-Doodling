@@ -6,7 +6,7 @@ int main(int argc, char* argv)
 
 	core::InitGame();
 	
-	while (!core::sceneManager.LoopActiveScene());
+	while (!core::sceneManager.LoopActiveScene())
 	{
 	}
 

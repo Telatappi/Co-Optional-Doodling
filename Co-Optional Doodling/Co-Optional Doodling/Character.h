@@ -6,6 +6,11 @@
 
 #include "Inventory.h"
 
+namespace core
+{
+	enum class CONTROLLER;
+}
+
 struct Stats
 {
 	std::string name;
@@ -41,10 +46,14 @@ public:
 	void IncreaseWisdom(int wisdom);
 	void IncreaseAccuracy(int accuracy);
 	void IncreaseAttack(int attack);
+	
+	void SetController(core::CONTROLLER controller);
+	core::CONTROLLER GetController();
 
 	Inventory inventory;
 private:
 	Stats stats;
+	core::CONTROLLER m_controller;
 };
 
 
