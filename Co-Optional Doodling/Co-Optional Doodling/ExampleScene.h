@@ -2,6 +2,13 @@
 #define EXAMPLESCENE_H
 
 #include "Scene.h"
+#include <vector>
+
+class Character;
+namespace core
+{
+	enum class COMBAT_OUTCOME;
+}
 
 class ExampleScene : public Scene
 {
@@ -14,7 +21,25 @@ public:
 	bool Loop(bool exit);
 	//do something before the scene ends
 	void Uninit();
-private:
+private:	
+	enum class SCENEPART
+	{
+		BEGINNING,
+		COMBAT,
+		END
+	};
+
+	enum class PARTDEPTH
+	{
+		BEGINNING,
+		MIDDLE,
+		END
+	};
+
+	SCENEPART m_scenePart;
+	PARTDEPTH m_partDepth;
+	std::vector<Character> m_enemies;
+	core::COMBAT_OUTCOME m_combatOutcome;
 };
 
 #endif
