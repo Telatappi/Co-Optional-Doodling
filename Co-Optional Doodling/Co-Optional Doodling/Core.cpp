@@ -40,7 +40,7 @@ core::COMBAT_OUTCOME core::Combat(Character player, std::vector<Character> enemi
 		units.push_back(player);
 		playerUnits.push_back(&units.back());
 
-		//sort units by their agility, fastest go first
+		//sort units by their agility, fastest goes first
 		std::vector<Character>::iterator nextUnitIt = units.begin();
 		std::vector<Character>::iterator unitIt = units.begin();		
 		do
@@ -101,6 +101,7 @@ core::COMBAT_OUTCOME core::Combat(Character player, std::vector<Character> enemi
 			}
 		}
 
+		//TODO: SELECT ENEMY TO HIT
 		std::cout << "\nQ) Hit an enemy\n";
 
 		//perform actions
@@ -129,8 +130,9 @@ core::COMBAT_OUTCOME core::Combat(Character player, std::vector<Character> enemi
 		unitIt = units.begin();
 		for (; unitIt != units.end();)
 		{
-			if ((*unitIt).Hp() < 0)
+			if ((*unitIt).Hp() < 1)
 			{
+				//units.erase returns next unit from the vector
 				unitIt = units.erase(unitIt);
 				continue;
 			}
@@ -164,6 +166,8 @@ core::COMBAT_OUTCOME core::Combat(Character player, std::vector<Character> enemi
 			return core::COMBAT_OUTCOME::PLAYER_VICTORY;
 		}
 	}
+
+
 }
 
 core::COMBAT_OUTCOME core::Combat(std::vector<Character> playerCharacters, Character enemy)
@@ -317,19 +321,19 @@ void core::ClearScreen()
 #endif
 }
 
-void core::PrintCharacterStats(Character _character)
+void core::PrintCharacterStats(Character& _character)
 {
 	if (_character.GetController() == core::CONTROLLER::PLAYER)
 	{
-		std::cout << "\nName: " << _character.Name()
-			<< " | Race: " << _character.Race()
-			<< "\nHp: " << _character.Hp()
-			<< " | Agi: " << _character.Agility()
-			<< " | Lck: " << _character.Luck()
-			<< "\nWis: " << _character.Wisdom()
-			<< " | Acc: " << _character.Accuracy()
-			<< " | Atk: " << _character.Attack()
-			<< "\n";
+		std::cout << "\nName: " << _character.Name();
+		std::cout << " | Race: " << _character.Race();
+		std::cout << "\nHp: " << _character.Hp();
+		std::cout << " | Agi: " << _character.Agility();
+		std::cout << " | Lck: " << _character.Luck();
+		std::cout << "\nWis: " << _character.Wisdom();
+		std::cout << " | Acc: " << _character.Accuracy();
+		std::cout << " | Atk: " << _character.Attack();
+		std::cout << "\n";
 	}
 	else
 	{
@@ -354,23 +358,18 @@ std::string core::GetText()
 		text = "\nthe text you were looking for is in another castle\n";
 	}
 
-	//\n means new line, the same way as std::endl;
-	//we automatically add new lines so user input 
-	// is shown on it's own line
-	std::cout << "\n" + text + "\n";
 	return text;
 }
 
 int core::GetKey()
 {
-	int key;
-	key = getchar();
 	fflush(stdin);
-
-	if (key == EOF)
+	int key;
+	do
 	{
-		return 0;
-	}
+		key = getchar();
+	} while (key == EOF || key == '\n');
+
 	return key;
 }
 

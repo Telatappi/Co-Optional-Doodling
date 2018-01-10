@@ -6,6 +6,8 @@
 
 #include "Inventory.h"
 
+#define NOT_DEFINED -999999
+
 namespace core
 {
 	enum class CONTROLLER;
@@ -13,15 +15,15 @@ namespace core
 
 struct Stats
 {
-	std::string name;
-	std::string race;
-	std::vector<std::string> perks;
-	unsigned int hp;
+	int hp;
 	unsigned int agility;
 	unsigned int luck;
 	unsigned int wisdom;
 	unsigned int accuracy;
 	unsigned int attack;
+	std::string name;
+	std::string race;
+	std::vector<std::string> perks;
 };
 
 class Character
@@ -33,12 +35,12 @@ public:
 	std::string Name(std::string name = "");
 	std::string Race(std::string race = "");
 	std::vector<std::string> Perks(std::string perk = "");
-	unsigned int Hp(int hp = -1);
-	unsigned int Agility(int agility = -1);
-	unsigned int Luck(int luck = -1);
-	unsigned int Wisdom(int wisdom = 0);
-	unsigned int Accuracy(int accuracy = 0);
-	unsigned int Attack(int attack = 0);
+	unsigned int Hp(int hp = NOT_DEFINED);
+	unsigned int Agility(int agility = NOT_DEFINED);
+	unsigned int Luck(int luck = NOT_DEFINED);
+	unsigned int Wisdom(int wisdom = NOT_DEFINED);
+	unsigned int Accuracy(int accuracy = NOT_DEFINED);
+	unsigned int Attack(int attack = NOT_DEFINED);
 
 	void IncreaseHp(int hp);
 	void IncreaseAgility(int agility);
@@ -52,7 +54,7 @@ public:
 
 	Inventory inventory;
 private:
-	Stats stats;
+	Stats m_stats;
 	core::CONTROLLER m_controller;
 };
 

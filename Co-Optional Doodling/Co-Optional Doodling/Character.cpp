@@ -10,113 +10,117 @@ Character::~Character()
 
 std::string Character::Name(std::string _name)
 {
+	//if name was provided
+	//we want to change current name
 	if (_name != "")
 	{
-		stats.name = _name;
+		m_stats.name = _name;
 	}
-	return stats.name;
+
+	//return current name
+	return m_stats.name;
 }
 
 std::string Character::Race(std::string _race)
 {
 	if (_race != "")
 	{
-		stats.race = _race;
+		m_stats.race = _race;
 	}
-	return stats.race;
+	return m_stats.race;
 }
 
 std::vector<std::string> Character::Perks(std::string _perk)
 {
 	if (_perk != "")
 	{
-		stats.perks.push_back(_perk);
+		m_stats.perks.push_back(_perk);
 	}
-	return stats.perks;
+	return m_stats.perks;
 }
 
 unsigned int Character::Hp(int _hp)
 {
-	if (_hp != -1)
+	if (_hp != NOT_DEFINED)
 	{
-		stats.hp = _hp;
+		m_stats.hp = _hp;
 	}
-	return stats.hp;
+	return m_stats.hp;
 }
 
 unsigned int Character::Agility(int _agility)
 {
-	if (_agility != -1)
+	if (_agility != NOT_DEFINED)
 	{
-		stats.agility = _agility;
+		m_stats.agility = _agility;
 	}
-	return stats.agility;
+	return m_stats.agility;
 }
 
 unsigned int Character::Luck(int _luck)
 {
-	if (_luck != -1)
+	if (_luck != NOT_DEFINED)
 	{
-		stats.luck = _luck;
+		m_stats.luck = _luck;
 	}
-	return stats.luck;
+	return m_stats.luck;
 }
 
 unsigned int Character::Wisdom(int _wisdom)
 {
-	if (_wisdom != -1)
+	if (_wisdom != NOT_DEFINED)
 	{
-		stats.wisdom = _wisdom;
+		m_stats.wisdom = _wisdom;
 	}
-	return stats.wisdom;
+	return m_stats.wisdom;
 }
 
 unsigned int Character::Accuracy(int _accuracy)
 {
-	if (_accuracy != -1)
+	if (_accuracy != NOT_DEFINED)
 	{
-		stats.accuracy = _accuracy;
+		m_stats.accuracy = _accuracy;
 	}
-	return stats.accuracy;
+	return m_stats.accuracy;
 }
 
 unsigned int Character::Attack(int _attack)
 {
-	if (_attack != -1)
+	if (_attack != NOT_DEFINED)
 	{
-		stats.attack = _attack;
+		m_stats.attack = _attack;
 	}
-	return stats.attack;
+	return m_stats.attack;
 }
 
 void Character::IncreaseHp(int _hp)
 {
-	stats.hp += _hp;
+	m_stats.hp += _hp;
 }
 
 void Character::IncreaseAgility(int _agility)
 {
-	stats.agility += _agility;
+	m_stats.agility += _agility;
 }
 
 void Character::IncreaseLuck(int _luck)
 {
-	stats.agility += _luck;
+	m_stats.agility += _luck;
 }
 
 void Character::IncreaseWisdom(int _wisdom)
 {
-	stats.wisdom += _wisdom;
+	m_stats.wisdom += _wisdom;
 }
 
 void Character::IncreaseAccuracy(int _accuracy)
 {
-	stats.accuracy += _accuracy;
+	m_stats.accuracy += _accuracy;
 }
 
 void Character::IncreaseAttack(int _attack)
 {
-	stats.attack += _attack;
+	m_stats.attack += _attack;
 }
 
 void Character::SetController(core::CONTROLLER _controller)

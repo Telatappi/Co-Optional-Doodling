@@ -41,7 +41,7 @@ namespace core
 	Character CreateCharacter();
 	
 	void ClearScreen();
-	void PrintCharacterStats(Character character);
+	void PrintCharacterStats(Character& character);
 
 	//get a string of text from input
 	std::string GetText();
