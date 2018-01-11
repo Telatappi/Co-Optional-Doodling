@@ -8,21 +8,18 @@ SceneManager core::sceneManager;
 const int NO_ITEM_SELECTED = 0;
 const int ITEM_SELECTED = 1;
 
-core::COMBAT_OUTCOME core::Combat(std::vector<Character> playerCharacters, std::vector<Character> enemyCharacters)
+core::COMBAT_OUTCOME core::Combat(std::vector<Character>& playerCharacters, std::vector<Character>& enemyCharacters)
 {
 	return core::COMBAT_OUTCOME::PLAYER_VICTORY;
 }
 
-core::COMBAT_OUTCOME core::Combat(Character player, Character enemy)
+core::COMBAT_OUTCOME core::Combat(Character& player, Character& enemy)
 {
 	return core::COMBAT_OUTCOME();
 }
 
-core::COMBAT_OUTCOME core::Combat(Character player, std::vector<Character> enemies)
+core::COMBAT_OUTCOME core::Combat(Character& player, std::vector<Character>& enemies)
 {
-	
-	//int = owner of the unit
-	//Character = unit itself
 	std::vector<Character> units;
 
 	std::vector<Character*> playerUnits;
@@ -119,17 +116,17 @@ core::COMBAT_OUTCOME core::Combat(Character player, std::vector<Character> enemi
 				{
 					if ((*enemyIt).GetController() == core::CONTROLLER::ENEMY)
 					{
-						(*enemyIt).IncreaseHp(-damage);
+						(*enemyIt).IncreaseHp((-damage));
 						break;
 					}
 				}
 			}
 		}
-		
+
 		//delete dead characters
 		unitIt = units.begin();
 		for (; unitIt != units.end();)
-		{
+		{ 
 			if ((*unitIt).Hp() < 1)
 			{
 				//units.erase returns next unit from the vector
@@ -170,7 +167,7 @@ core::COMBAT_OUTCOME core::Combat(Character player, std::vector<Character> enemi
 
 }
 
-core::COMBAT_OUTCOME core::Combat(std::vector<Character> playerCharacters, Character enemy)
+core::COMBAT_OUTCOME core::Combat(std::vector<Character>& playerCharacters, Character& enemy)
 {
 	return core::COMBAT_OUTCOME();
 }
@@ -221,6 +218,7 @@ void core::PlayerCreation()
 		&& character.Race() != "werebear");
 
 	character.Hp(core::Rand(90, 100));
+	character.SetMaxHp(character.Hp());
 	character.Agility(core::Rand(8, 12));
 	character.Luck(core::Rand(8, 12));
 	character.Wisdom(core::Rand(8, 12));

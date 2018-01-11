@@ -85,6 +85,7 @@ bool ExampleScene::Loop(bool exit)
 						enemy.Name("thug");
 						enemy.Race("human");
 						enemy.Hp(core::Rand(10, 100));
+						enemy.SetMaxHp(enemy.Hp());
 						enemy.Agility(core::Rand(1, 10));
 						enemy.Luck(core::Rand(1, 10));
 						enemy.Wisdom(core::Rand(1, 10));

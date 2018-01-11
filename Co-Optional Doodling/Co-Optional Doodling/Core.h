@@ -28,12 +28,12 @@ namespace core
 		ENEMY
 	};
 
-	COMBAT_OUTCOME Combat(std::vector<Character> playerCharacters,
-		std::vector<Character> enemies);
+	COMBAT_OUTCOME Combat(std::vector<Character>& playerCharacters,
+		std::vector<Character>& enemies);
 
-	COMBAT_OUTCOME Combat(Character player, Character enemy);
-	COMBAT_OUTCOME Combat(Character player, std::vector<Character> enemies);
-	COMBAT_OUTCOME Combat(std::vector<Character> playerCharacters, Character enemy);
+	COMBAT_OUTCOME Combat(Character& player, Character& enemy);
+	COMBAT_OUTCOME Combat(Character& player, std::vector<Character>& enemies);
+	COMBAT_OUTCOME Combat(std::vector<Character>& playerCharacters, Character& enemy);
 
 	//game core stuff
 	void InitGame();

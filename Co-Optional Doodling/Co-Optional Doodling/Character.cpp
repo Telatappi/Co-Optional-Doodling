@@ -39,7 +39,7 @@ std::vector<std::string> Character::Perks(std::string _perk)
 	return m_stats.perks;
 }
 
-unsigned int Character::Hp(int _hp)
+int Character::Hp(int _hp)
 {
 	if (_hp != NOT_DEFINED)
 	{
@@ -96,6 +96,11 @@ unsigned int Character::Attack(int _attack)
 void Character::IncreaseHp(int _hp)
 {
 	m_stats.hp += _hp;
+
+	if (m_stats.hp > m_stats.maxHp)
+	{
+		m_stats.hp = m_stats.maxHp;
+	}
 }
 
 void Character::IncreaseAgility(int _agility)
@@ -121,6 +126,11 @@ void Character::IncreaseAccuracy(int _accuracy)
 void Character::IncreaseAttack(int _attack)
 {
 	m_stats.attack += _attack;
+}
+
+void Character::SetMaxHp(int _maxHp)
+{
+	m_stats.maxHp = _maxHp;
 }
 
 void Character::SetController(core::CONTROLLER _controller)

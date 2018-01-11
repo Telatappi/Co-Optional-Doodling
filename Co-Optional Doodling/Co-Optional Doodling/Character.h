@@ -15,6 +15,7 @@ namespace core
 
 struct Stats
 {
+	int maxHp;
 	int hp;
 	unsigned int agility;
 	unsigned int luck;
@@ -35,7 +36,7 @@ public:
 	std::string Name(std::string name = "");
 	std::string Race(std::string race = "");
 	std::vector<std::string> Perks(std::string perk = "");
-	unsigned int Hp(int hp = NOT_DEFINED);
+	int Hp(int hp = NOT_DEFINED);
 	unsigned int Agility(int agility = NOT_DEFINED);
 	unsigned int Luck(int luck = NOT_DEFINED);
 	unsigned int Wisdom(int wisdom = NOT_DEFINED);
@@ -48,6 +49,7 @@ public:
 	void IncreaseWisdom(int wisdom);
 	void IncreaseAccuracy(int accuracy);
 	void IncreaseAttack(int attack);
+	void SetMaxHp(int maxHp);
 	
 	void SetController(core::CONTROLLER controller);
 	core::CONTROLLER GetController();
