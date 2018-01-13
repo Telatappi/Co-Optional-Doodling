@@ -3,6 +3,7 @@
 #include "Core.h"
 
 //include your scene here
+#include "MainMenu.h"
 #include "ExampleScene.h"
 
 SceneManager::SceneManager()
@@ -29,8 +30,6 @@ bool SceneManager::LoopActiveScene()
 
 void SceneManager::NextRandomScene(core::Location _previousLocation, core::Location _targetLocation)
 {
-	//1st val = scene position in scenes array
-	//2nd val = scene name
 	std::vector<std::string> possibleScenesNames;
 	//tracks individual values of random
 	int* scenes = new int[m_scenes.size()];
@@ -98,6 +97,7 @@ void SceneManager::InitScenes()
 	//enter scenes here
 	//also main menu needs to be added
 	m_scenes.push_back(new ExampleScene(this, "ExampleScene", core::Location::TEMPPELINRAUNIOT));
+	m_scenes.push_back(new MainMenu(this, "MainMenu", core::Location::NOTALOCATION));
 }
 
 void SceneManager::LoadScene(std::string& _sceneName)

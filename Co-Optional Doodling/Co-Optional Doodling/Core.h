@@ -37,7 +37,6 @@ namespace core
 
 	//game core stuff
 	void InitGame();
-	void PlayerCreation();
 	Character CreateCharacter();
 	
 	void ClearScreen();

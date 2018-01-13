@@ -13,9 +13,14 @@ public:
 	bool LoopActiveScene();
 	void NextRandomScene(core::Location previousLocation, core::Location targetLocation);
 	void NextLinkedScene(std::string& name);
+
+	//This should not be used
+	//in normal in-game scenes
+	//to load next scene
+	void LoadScene(std::string& sceneName);
 private:
 	void InitScenes();
-	void LoadScene(std::string& sceneName);
+
 	Scene* m_activeScene;
 	std::vector<Scene*> m_scenes;
 	bool m_exit;

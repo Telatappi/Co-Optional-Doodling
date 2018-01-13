@@ -15,7 +15,13 @@ namespace core
 		TASANKO,
 		AAVIKKO,
 		SAMMUNUTTULIVUORI,
-		TRAVELING
+		TRAVELING,
+
+		//NOTE! Add locations above!
+		//the ones below are special ones 
+		//and you should not add anything there
+		NUMBEROFLOCATIONS,
+		NOTALOCATION,
 	};
 }
 

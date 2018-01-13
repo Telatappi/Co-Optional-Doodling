@@ -10,8 +10,7 @@ int main(int argc, char* argv)
 	{
 	}
 
-	fflush(stdin);
-	getchar();
+	system("pause");
 	return 0;
 }
 
