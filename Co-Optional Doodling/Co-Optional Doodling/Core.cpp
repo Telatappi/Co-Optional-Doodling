@@ -1,6 +1,8 @@
 #include "Core.h"
 #include <iostream>
 #include <algorithm>
+#include <cstdio>
+#include <iostream>
 
 Character core::player;
 SceneManager core::sceneManager;
@@ -164,7 +166,7 @@ core::COMBAT_OUTCOME core::Combat(Character& player, std::vector<Character>& ene
 		}
 	}
 
-
+	return core::COMBAT_OUTCOME::PLAYER_VICTORY;
 }
 
 core::COMBAT_OUTCOME core::Combat(std::vector<Character>& playerCharacters, Character& enemy)
@@ -233,10 +235,10 @@ std::string core::GetText()
 
 int core::GetKey()
 {
-	fflush(stdin);
 	int key;
 	do
 	{
+		std::cin.sync();
 		key = getchar();
 	} while (key == EOF || key == '\n');
 
@@ -457,6 +459,59 @@ void core::EnterInventory()
 
 void core::Pause()
 {
-	fflush(stdin);
-	getchar();
+	std::cout << "Press enter to continue\n";
+	int c = 0;
+	do
+	{
+		c = getchar();
+	} while (c != '\n' && c != EOF);
+}
+
+core::Location core::GetRandomLocation()
+{
+	core::Location location = static_cast<core::Location>(
+		Rand(0, static_cast<int>(core::Location::NUMBEROFLOCATIONS)));
+
+	switch (location)
+	{
+		case core::Location::BLACKRIVER:
+		{
+			return core::Location::BLACKRIVER;
+			break;
+		}
+		case core::Location::DUSSELDWARF:
+		{
+			return core::Location::DUSSELDWARF;
+			break;
+		}
+		case core::Location::TEMPPELINRAUNIOT:
+		{
+			return core::Location::TEMPPELINRAUNIOT;
+			break;
+		}
+		case core::Location::TASANKO:
+		{
+			return core::Location::TASANKO;
+			break;
+		}
+		case core::Location::AAVIKKO:
+		{
+			return core::Location::AAVIKKO;
+			break;
+		}
+		case core::Location::SAMMUNUTTULIVUORI:
+		{
+			return core::Location::SAMMUNUTTULIVUORI;
+			break;
+		}
+		case core::Location::TRAVELING:
+		{
+			return core::Location::TRAVELING;
+			break;
+		}
+		default:
+			break;
+	}
+
+	return Location();
 }

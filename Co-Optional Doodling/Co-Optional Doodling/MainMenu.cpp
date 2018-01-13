@@ -145,5 +145,7 @@ void MainMenu::PlayerCreation()
 	{
 		core::player = character;
 		core::sceneManager.NextRandomScene(core::Location::TRAVELING, core::Location::TEMPPELINRAUNIOT);
+		//once all locations have at least one scene use the one below instead
+		//core::sceneManager.NextRandomScene(core::Location::TRAVELING, core::GetRandomLocation());
 	}
 }

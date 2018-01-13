@@ -5,7 +5,10 @@
 ExampleScene::ExampleScene(SceneManager* _sceneManager, std::string _name, core::Location _location)
 	:Scene(_sceneManager, _name, _location),
 	m_scenePart(SCENEPART::BEGINNING),
-	m_partDepth(PARTDEPTH::BEGINNING)
+	m_partDepth(PARTDEPTH::BEGINNING),
+	m_rng(0),
+	m_used(false),
+	m_escape(ESCAPE::DIDNT)
 {
 	
 }
@@ -23,7 +26,7 @@ bool ExampleScene::Loop(bool exit)
 	std::string answer;
 	switch(m_scenePart)
 	{
-	case SCENEPART::BEGINNING:
+		case SCENEPART::BEGINNING:
 		{
 			switch (m_partDepth)
 			{
@@ -44,6 +47,7 @@ bool ExampleScene::Loop(bool exit)
 					{
 						m_partDepth = PARTDEPTH::BEGINNING;
 						m_scenePart = SCENEPART::END;
+						m_escape = ESCAPE::RANAWAY;
 					}
 					break;
 				}
@@ -65,7 +69,9 @@ bool ExampleScene::Loop(bool exit)
 					{
 						m_partDepth = PARTDEPTH::BEGINNING;
 						m_scenePart = SCENEPART::END;
+						m_escape = ESCAPE::TRIED;
 					}
+					core::Pause();
 					break;
 				}
 				default:
@@ -73,7 +79,7 @@ bool ExampleScene::Loop(bool exit)
 			}
 			break;
 		}
-	case SCENEPART::COMBAT:
+		case SCENEPART::COMBAT:
 		{
 			switch (m_partDepth)
 			{
@@ -101,23 +107,13 @@ bool ExampleScene::Loop(bool exit)
 				{
 					m_combatOutcome = core::Combat(core::player, m_enemies);
 					m_partDepth = PARTDEPTH::END;
+					core::Pause();
 					break;
 				}
 				case PARTDEPTH::END:
 				{
-					std::string endText;
-					if (m_combatOutcome == core::COMBAT_OUTCOME::PLAYER_VICTORY)
-					{
-						//TODO: pause
-						std::cout << "\nYou won the combat.\n";
-						//load next scene
-					}
-					else if (m_combatOutcome == core::COMBAT_OUTCOME::PLAYER_DEATH
-						|| m_combatOutcome == core::COMBAT_OUTCOME::PLAYER_ESCAPE)
-					{
-						std::cout << "\nYou died.\n";
-						//load next scene
-					}
+					m_partDepth = PARTDEPTH::BEGINNING;
+					m_scenePart = SCENEPART::END;
 					break;
 				}
 				default:
@@ -125,28 +121,65 @@ bool ExampleScene::Loop(bool exit)
 			}
 			break;
 		}
-	case SCENEPART::END:
+		case SCENEPART::END:
 		{
+			core::ClearScreen();
 			switch (m_partDepth)
 			{
 				case PARTDEPTH::BEGINNING:
 				{
 					if (m_combatOutcome == core::COMBAT_OUTCOME::PLAYER_VICTORY)
 					{
-						std::cout << "You slayed the puny mummiefied robbers!\n";
-						std::cout << "You lean forward to enjoy the spoils of victory,";
-						std::cout << "to gather what the robbers left.\n";
-						std::cout << "You pick up a necklace with stone attached to it.\n";
-						std::cout << "The stone shimmers with a dim blue light";
-						std::cout << "As the neclace disappears into your pocket,\n";
-						std::cout << "you first hear a silent hissing sound, followed by a cracking noise.\n";
-						std::cout << "the pocket feels chill suddenly and as you pick up the necklace your eyes\n";
-						std::cout << "lock onto the necklace. The stone is now a common grey stone.\n";
-						std::cout << "Not only that, but you can see a large crack on it's surface.\n";
-						std::cout << "It must have contained something to keep those foul beasts together.\n";
-						std::cout << "No more of any value in the market, you throw it away frustrated.\n";
-						std::cout << "As the common necklace hits ground, it doesn't even let out a satisfying clank.\n";
-						std::cout << "Now, feeling insulted, you finally leave the scene.\n";
+						if (!m_used)
+						{
+							m_rng = core::Rand(0, 1);
+							m_used = true;
+						}
+						if (m_rng == 0)
+						{
+							std::cout << "You slayed the puny mummiefied robbers!\n";
+							std::cout << "You lean forward to enjoy the spoils of victory,";
+							std::cout << "to gather what the robbers left.\n";
+							std::cout << "You pick up a necklace with stone attached to it.\n";
+							std::cout << "The stone shimmers with a dim blue light";
+							std::cout << "As the neclace disappears into your pocket,\n";
+							std::cout << "you first hear a silent hissing sound, followed by a cracking noise.\n";
+							std::cout << "the pocket feels chill suddenly and as you pick up the necklace your eyes\n";
+							std::cout << "lock onto the necklace. The stone is now a common grey stone.\n";
+							std::cout << "Not only that, but you can see a large crack on it's surface.\n";
+							std::cout << "It must have contained something to keep those foul beasts together.\n";
+							std::cout << "No more of any value in the market, you throw it away frustrated.\n";
+							std::cout << "As the common necklace hits ground, it doesn't even let out a satisfying clank.\n";
+							std::cout << "Now, feeling insulted, you finally leave the scene.\n";
+						}
+						else
+						{
+							std::cout << "Even when you're on your limits, the two creatures don't seem\n";
+							std::cout << "even slightly fatigued. Before you can step futher in your thoughts\n";
+							std::cout << "one of the decaying creatures goes for a swing.\n";
+							std::cout << "You manage to deflect the strike and guide its blade on the side.\n";
+							std::cout << "This is perhaps your only chance to land a good strike you think.\n";
+							std::cout << "But even before the thought has completed in your mind you go for a strike.\n";
+							std::cout << "Your blade cuts into its right shoulder. The situation surprises even you\n";
+							std::cout << "as the resistant of the creatures body seems to be a lot less than that of a living body.\n";
+							std::cout << "Even though the blade doesn't cut the limb clean the sword falls from the creature's grip.\n";
+							std::cout << "The wreck of a creatures lets out a shrieking voice mimicing a creature in pain.\n";
+							std::cout << "The one still fully functioning prepares for a strike, but you dodge right,\n";
+							std::cout << "Leaving the disabled creture between you and the fully functioning one.\n";
+							std::cout << "You prepare another strike. This time with the power of full body.\n";
+							std::cout << "You rotate your body as you unleash your full rath on the creature.\n";
+							std::cout << "Your blade rips its head right off, sending it towards the one behind.\n";
+							std::cout << "The one in front falls apart as the magic is no more holding the body together.\n";
+							std::cout << "The unattached head sprints through the air like a boulder from a trebuchet.\n";
+							std::cout << "Remaining monster manages to take a step towards you before the head hits its chest\n";
+							std::cout << "Loud cracking noises fill the air as the head penetrates creature's ribcase.\n";
+							std::cout << "The creature collapses immediately as it's impaled by its comrade's head.\n";
+							std::cout << "You look the bizarre sight for a second before turning away.\n";
+						}
+
+						core::Pause();
+						//load next scene
+						core::sceneManager.NextRandomScene(core::Location::TRAVELING, core::Location::TEMPPELINRAUNIOT);
 					}
 					else if (m_combatOutcome == core::COMBAT_OUTCOME::PLAYER_ESCAPE)
 					{
@@ -158,6 +191,10 @@ bool ExampleScene::Loop(bool exit)
 						std::cout << "You hear a loud 'thump'. The other stands there, waiting for a strike,\n";
 						std::cout << "but instead you sprint off. When it finally reacts, you've gained a safe distance.\n";
 						std::cout << "You escape scared but alive.\n";
+
+						core::Pause();
+						//load next scene
+						core::sceneManager.NextRandomScene(core::Location::TRAVELING, core::Location::TEMPPELINRAUNIOT);
 					}
 					else if (m_combatOutcome == core::COMBAT_OUTCOME::PLAYER_DEATH)
 					{
@@ -171,6 +208,11 @@ bool ExampleScene::Loop(bool exit)
 						std::cout << "Your vision blurs,\n";
 						std::cout << "your weapon falls off from your grip just as you feel another blade enter your body\n";
 						std::cout << "Within seconds all the pain is gone. You're dead.";
+
+						core::Pause();
+						//load next scene
+						std::string menuText = "mainMenu";
+						core::sceneManager.LoadScene(menuText);
 					}
 					break;
 				}
@@ -191,4 +233,6 @@ bool ExampleScene::Loop(bool exit)
 
 void ExampleScene::Uninit()
 {
+	m_partDepth = PARTDEPTH::BEGINNING;
+	m_scenePart = SCENEPART::BEGINNING;
 }

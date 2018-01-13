@@ -18,6 +18,7 @@ public:
 	//in normal in-game scenes
 	//to load next scene
 	void LoadScene(std::string& sceneName);
+
 private:
 	void InitScenes();
 

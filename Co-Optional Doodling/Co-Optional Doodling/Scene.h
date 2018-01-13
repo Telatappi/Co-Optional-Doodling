@@ -7,7 +7,7 @@ class SceneManager;
 
 namespace core
 {
-	enum Location
+	enum class Location
 	{
 		BLACKRIVER,
 		DUSSELDWARF,

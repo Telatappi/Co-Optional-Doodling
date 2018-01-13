@@ -36,10 +36,20 @@ private:
 		END
 	};
 
+	enum class ESCAPE
+	{
+		RANAWAY,
+		TRIED,
+		DIDNT
+	};
+
 	SCENEPART m_scenePart;
 	PARTDEPTH m_partDepth;
 	std::vector<Character> m_enemies;
 	core::COMBAT_OUTCOME m_combatOutcome;
+	int m_rng;
+	bool m_used;
+	ESCAPE m_escape;
 };
 
 #endif

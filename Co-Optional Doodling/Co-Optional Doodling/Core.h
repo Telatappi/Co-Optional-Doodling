@@ -57,6 +57,8 @@ namespace core
 
 	void Pause();
 
+	Location GetRandomLocation();
+
 	//variables
 	extern SceneManager sceneManager;
 	extern Character player;
