@@ -217,6 +217,7 @@ void core::PrintCharacterStats(Character& _character)
 
 std::string core::GetText()
 {
+	std::cout << "type !help for help\n";
 	std::string text;
 	std::cin >> text;
 	
@@ -227,7 +228,7 @@ std::string core::GetText()
 	}
 	else if (text == "!help") //get help
 	{
-		text = "\nthe text you were looking for is in another castle\n";
+		std::cout <<"[!inv] = Enter Inventory\n";
 	}
 
 	return text;
@@ -259,11 +260,11 @@ void core::EnterInventory()
 	int depth = 0;
 	int selectedItem = -1;
 
-	while (exit)
+	while (!exit)
 	{
 		//top of the screen
 		std::cout <<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
-				  <<"				Inventory\n"
+				  <<"Inventory\n"
 				  <<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 		switch (depth)
 		{
@@ -272,78 +273,78 @@ void core::EnterInventory()
 				if (page == 0)
 				{
 					std::cout << "Equipped:\n";
-					std::cout <<  "Helmet:"
-						<< "\nname:" + player.inventory.Slot("helmet").GetName()
-						<< "\nhp : " + std::to_string(player.inventory.Slot("helmet").GetHp())
-						<< "\nagi: " + std::to_string(player.inventory.Slot("helmet").GetAgility())
-						<< "\nlck: " + std::to_string(player.inventory.Slot("helmet").GetLuck())
-						<< "\nwsd: " + std::to_string(player.inventory.Slot("helmet").GetWisdom())
-						<< "\nacc: " + std::to_string(player.inventory.Slot("helmet").GetAccuracy())
-						<< "\natk: " + std::to_string(player.inventory.Slot("helmet").GetAttack())
-						<< "\ntyp: " + player.inventory.Slot("helmet").GetType() + "\n";
+					std::cout <<  "Helmet:\n"
+						<< "[Name:" + player.inventory.Slot("helmet").GetName() << "]"
+						<< "[Hp : " + std::to_string(player.inventory.Slot("helmet").GetHp()) << "]"
+						<< "[Agi: " + std::to_string(player.inventory.Slot("helmet").GetAgility()) << "]"
+						<< "[Lck: " + std::to_string(player.inventory.Slot("helmet").GetLuck()) << "]"
+						<< "[Wsd: " + std::to_string(player.inventory.Slot("helmet").GetWisdom()) << "]"
+						<< "[Acc: " + std::to_string(player.inventory.Slot("helmet").GetAccuracy()) << "]"
+						<< "[Atk: " + std::to_string(player.inventory.Slot("helmet").GetAttack()) << "]"
+						<< "[Typ: " + player.inventory.Slot("helmet").GetType() + "]\n";
 
 					std::cout << "Armor:\n"
-						<<"name:" + player.inventory.Slot("armor").GetName()
-						<< "hp : " + std::to_string(player.inventory.Slot("armor").GetHp())
-						<< "agi: " + std::to_string(player.inventory.Slot("armor").GetAgility())
-						<< "lck: " + std::to_string(player.inventory.Slot("armor").GetLuck())
-						<< "wsd: " + std::to_string(player.inventory.Slot("armor").GetWisdom())
-						<< "acc: " + std::to_string(player.inventory.Slot("armor").GetAccuracy())
-						<< "atk: " + std::to_string(player.inventory.Slot("armor").GetAttack())
-						<< "typ: " + player.inventory.Slot("armor").GetType() + "\n";
+						<< "[Name:" + player.inventory.Slot("armor").GetName() << "]"
+						<< "[Hp : " + std::to_string(player.inventory.Slot("armor").GetHp()) << "]"
+						<< "[Agi: " + std::to_string(player.inventory.Slot("armor").GetAgility()) << "]"
+						<< "[Lck: " + std::to_string(player.inventory.Slot("armor").GetLuck()) << "]"
+						<< "[Wsd: " + std::to_string(player.inventory.Slot("armor").GetWisdom()) << "]"
+						<< "[Acc: " + std::to_string(player.inventory.Slot("armor").GetAccuracy()) << "]"
+						<< "[Atk: " + std::to_string(player.inventory.Slot("armor").GetAttack()) << "]"
+						<< "[Typ: " + player.inventory.Slot("armor").GetType() + "]\n";
 
-					std::cout << "main hand:\n"
-						<< "name:" + player.inventory.Slot("main hand").GetName()
-						<< "hp : " + std::to_string(player.inventory.Slot("main hand").GetHp())
-						<< "agi: " + std::to_string(player.inventory.Slot("main hand").GetAgility())
-						<< "lck: " + std::to_string(player.inventory.Slot("main hand").GetLuck())
-						<< "wsd: " + std::to_string(player.inventory.Slot("main hand").GetWisdom())
-						<< "acc: " + std::to_string(player.inventory.Slot("main hand").GetAccuracy())
-						<< "atk: " + std::to_string(player.inventory.Slot("main hand").GetAttack())
-						<< "typ: " + player.inventory.Slot("mHand").GetType() + "\n";
+					std::cout << "Main hand:\n"
+						<< "[Name:" + player.inventory.Slot("main hand").GetName() << "]"
+						<< "[Hp : " + std::to_string(player.inventory.Slot("main hand").GetHp()) << "]"
+						<< "[Agi: " + std::to_string(player.inventory.Slot("main hand").GetAgility()) << "]"
+						<< "[Lck: " + std::to_string(player.inventory.Slot("main hand").GetLuck()) << "]"
+						<< "[Wsd: " + std::to_string(player.inventory.Slot("main hand").GetWisdom()) << "]"
+						<< "[Acc: " + std::to_string(player.inventory.Slot("main hand").GetAccuracy()) << "]"
+						<< "[Atk: " + std::to_string(player.inventory.Slot("main hand").GetAttack()) << "]"
+						<< "[Typ: " + player.inventory.Slot("mHand").GetType() + "]\n";
 
-					std::cout << "off hand:\n"
-						<< "name:" + player.inventory.Slot("off hand").GetName()
-						<< "hp : " + std::to_string(player.inventory.Slot("off hand").GetHp())
-						<< "agi: " + std::to_string(player.inventory.Slot("off hand").GetAgility())
-						<< "lck: " + std::to_string(player.inventory.Slot("off hand").GetLuck())
-						<< "wsd: " + std::to_string(player.inventory.Slot("off hand").GetWisdom())
-						<< "acc: " + std::to_string(player.inventory.Slot("off hand").GetAccuracy())
-						<< "atk: " + std::to_string(player.inventory.Slot("off hand").GetAttack())
-						<< "typ: " + player.inventory.Slot("oHand").GetType() + "\n";
+					std::cout << "Off hand:\n"
+						<< "[Name:" + player.inventory.Slot("off hand").GetName() << "]"
+						<< "[Hp : " + std::to_string(player.inventory.Slot("off hand").GetHp()) << "]"
+						<< "[Agi: " + std::to_string(player.inventory.Slot("off hand").GetAgility()) << "]"
+						<< "[Lck: " + std::to_string(player.inventory.Slot("off hand").GetLuck()) << "]"
+						<< "[Wsd: " + std::to_string(player.inventory.Slot("off hand").GetWisdom()) << "]"
+						<< "[Acc: " + std::to_string(player.inventory.Slot("off hand").GetAccuracy()) << "]"
+						<< "[Atk: " + std::to_string(player.inventory.Slot("off hand").GetAttack()) << "]"
+						<< "[Typ: " + player.inventory.Slot("oHand").GetType() + "]\n";
 
-					std::cout << "misc1:\n"
-						<< "name:" + player.inventory.Slot("misc1").GetName()
-						<< "hp : " + std::to_string(player.inventory.Slot("misc1").GetHp())
-						<< "agi: " + std::to_string(player.inventory.Slot("misc1").GetAgility())
-						<< "lck: " + std::to_string(player.inventory.Slot("misc1").GetLuck())
-						<< "wsd: " + std::to_string(player.inventory.Slot("misc1").GetWisdom())
-						<< "acc: " + std::to_string(player.inventory.Slot("misc1").GetAccuracy())
-						<< "atk: " + std::to_string(player.inventory.Slot("misc1").GetAttack())
-						<< "typ: " + player.inventory.Slot("misc1").GetType() + "\n";
+					std::cout << "Misc 1:\n"
+						<< "[Name:" + player.inventory.Slot("misc1").GetName() << "]"
+						<< "[Hp : " + std::to_string(player.inventory.Slot("misc1").GetHp()) << "]"
+						<< "[Agi: " + std::to_string(player.inventory.Slot("misc1").GetAgility()) << "]"
+						<< "[Lck: " + std::to_string(player.inventory.Slot("misc1").GetLuck()) << "]"
+						<< "[Wsd: " + std::to_string(player.inventory.Slot("misc1").GetWisdom()) << "]"
+						<< "[Acc: " + std::to_string(player.inventory.Slot("misc1").GetAccuracy()) << "]"
+						<< "[Atk: " + std::to_string(player.inventory.Slot("misc1").GetAttack()) << "]"
+						<< "[Typ: " + player.inventory.Slot("misc1").GetType() + "]\n";
 
-					std::cout <<"misc2:\n"
-						<< "name:" + player.inventory.Slot("misc2").GetName()
-						<< "hp : " + std::to_string(player.inventory.Slot("misc2").GetHp())
-						<< "agi: " + std::to_string(player.inventory.Slot("misc2").GetAgility())
-						<< "lck: " + std::to_string(player.inventory.Slot("misc2").GetLuck())
-						<< "wsd: " + std::to_string(player.inventory.Slot("misc2").GetWisdom())
-						<< "acc: " + std::to_string(player.inventory.Slot("misc2").GetAccuracy())
-						<< "atk: " + std::to_string(player.inventory.Slot("misc2").GetAttack())
-						<< "typ: " + player.inventory.Slot("misc2").GetType() + "\n";
+					std::cout <<"Misc 2:\n"
+						<< "[Name:" + player.inventory.Slot("misc2").GetName() << "]"
+						<< "[Hp : " + std::to_string(player.inventory.Slot("misc2").GetHp()) << "]"
+						<< "[Agi: " + std::to_string(player.inventory.Slot("misc2").GetAgility()) << "]"
+						<< "[Lck: " + std::to_string(player.inventory.Slot("misc2").GetLuck()) << "]"
+						<< "[Wsd: " + std::to_string(player.inventory.Slot("misc2").GetWisdom()) << "]"
+						<< "[Acc: " + std::to_string(player.inventory.Slot("misc2").GetAccuracy()) << "]"
+						<< "[Atk: " + std::to_string(player.inventory.Slot("misc2").GetAttack()) << "]"
+						<< "[Typ: " + player.inventory.Slot("misc2").GetType() + "]\n";
 
-					std::cout << "\n\n Items in the inventory";
+					std::cout << "\n\n Items in the inventory\n";
 					for (unsigned int i = 0; (i < player.inventory.GetItems().size() && i < 2); ++i)
 					{
 						std::cout << "\nItem:\n"
-							<< "name:" + player.inventory.GetItems()[i].GetName()
-							<< "hp : " + std::to_string(player.inventory.GetItems()[i].GetHp())
-							<< "agi: " + std::to_string(player.inventory.GetItems()[i].GetAgility())
-							<< "lck: " + std::to_string(player.inventory.GetItems()[i].GetLuck())
-							<< "wsd: " + std::to_string(player.inventory.GetItems()[i].GetWisdom())
-							<< "acc: " + std::to_string(player.inventory.GetItems()[i].GetAccuracy())
-							<< "atk: " + std::to_string(player.inventory.GetItems()[i].GetAttack())
-							<< "typ: " + player.inventory.GetItems()[i].GetType() + "\n";
+							<< "[Name:" + player.inventory.GetItems()[i].GetName() << "]"
+							<< "[Hp : " + std::to_string(player.inventory.GetItems()[i].GetHp()) << "]"
+							<< "[Agi: " + std::to_string(player.inventory.GetItems()[i].GetAgility()) << "]"
+							<< "[Lck: " + std::to_string(player.inventory.GetItems()[i].GetLuck()) << "]"
+							<< "[Wsd: " + std::to_string(player.inventory.GetItems()[i].GetWisdom()) << "]"
+							<< "[Acc: " + std::to_string(player.inventory.GetItems()[i].GetAccuracy()) << "]"
+							<< "[Atk: " + std::to_string(player.inventory.GetItems()[i].GetAttack()) << "]"
+							<< "[Typ: " + player.inventory.GetItems()[i].GetType() + "]\n";
 					}
 					std::string text = GetText();
 					++page;
@@ -353,15 +354,15 @@ void core::EnterInventory()
 					std::cout << "\n\n Items in the inventory";
 					for (unsigned int i = 0; (i + 2) < player.inventory.GetItems().size() && i < 8; ++i)
 					{
-						std::cout << "\nItem:"
-							<< "\nname:" + player.inventory.GetItems()[(8 * page) + (2 + i)].GetName()
-							<< "hp : " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetHp())
-							<< "agi: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetAgility())
-							<< "lck: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetLuck())
-							<< "wsd: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetWisdom())
-							<< "acc: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetAccuracy())
-							<< "atk: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetAttack())
-							<< "typ: " + player.inventory.GetItems()[(8 * page) + (2 + i)].GetType() + "\n";
+						std::cout << "\nItem:\n"
+							<< "[Name:" + player.inventory.GetItems()[(8 * page) + (2 + i)].GetName() << "]"
+							<< "[Hp : " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetHp()) << "]"
+							<< "[Agi: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetAgility()) << "]"
+							<< "[Lck: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetLuck()) << "]"
+							<< "[Wsd: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetWisdom()) << "]"
+							<< "[Acc: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetAccuracy()) << "]"
+							<< "[Atk: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetAttack()) << "]"
+							<< "[Typ: " + player.inventory.GetItems()[(8 * page) + (2 + i)].GetType() + "]\n";
 
 						if (i % 7 == 0)
 						{
@@ -374,15 +375,15 @@ void core::EnterInventory()
 			}
 			case ITEM_SELECTED:
 			{
-				std::cout << "\nItem:"
-					<< "\nname:" + player.inventory.GetItems()[selectedItem].GetName()
-					<< "hp : " + std::to_string(player.inventory.GetItems()[selectedItem].GetHp())
-					<< "agi: " + std::to_string(player.inventory.GetItems()[selectedItem].GetAgility())
-					<< "lck: " + std::to_string(player.inventory.GetItems()[selectedItem].GetLuck())
-					<< "wsd: " + std::to_string(player.inventory.GetItems()[selectedItem].GetWisdom())
-					<< "acc: " + std::to_string(player.inventory.GetItems()[selectedItem].GetAccuracy())
-					<< "atk: " + std::to_string(player.inventory.GetItems()[selectedItem].GetAttack())
-					<< "typ: " + player.inventory.GetItems()[selectedItem].GetType() + "\n";
+				std::cout << "\nItem:\n"
+					<< "[Name:" + player.inventory.GetItems()[selectedItem].GetName() << "]"
+					<< "[Hp : " + std::to_string(player.inventory.GetItems()[selectedItem].GetHp()) << "]"
+					<< "[Agi: " + std::to_string(player.inventory.GetItems()[selectedItem].GetAgility()) << "]"
+					<< "[Lck: " + std::to_string(player.inventory.GetItems()[selectedItem].GetLuck()) << "]"
+					<< "[Wsd: " + std::to_string(player.inventory.GetItems()[selectedItem].GetWisdom()) << "]"
+					<< "[Acc: " + std::to_string(player.inventory.GetItems()[selectedItem].GetAccuracy()) << "]"
+					<< "[Atk: " + std::to_string(player.inventory.GetItems()[selectedItem].GetAttack()) << "]"
+					<< "[Typ: " + player.inventory.GetItems()[selectedItem].GetType() + "]\n";
 				break;
 			}
 			default:

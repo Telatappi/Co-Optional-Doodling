@@ -53,7 +53,7 @@ void MainMenu::PlayerCreation()
 	character.Name(name);
 
 	std::cout << "Enter Race:" << std::endl;
-	std::cout << "Gnome | Elf | Merman | Cat Woman | Werebear";
+	std::cout << "Gnome | Elf | Merman | Cat Woman | Werebear\n";
 	do
 	{
 		std::string race;
