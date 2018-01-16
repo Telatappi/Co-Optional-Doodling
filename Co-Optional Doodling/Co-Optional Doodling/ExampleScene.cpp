@@ -19,6 +19,93 @@ ExampleScene::~ExampleScene()
 
 void ExampleScene::Init()
 {
+	Item item1;
+	item1.SetName("Pointy Stick");
+	item1.SetHp(0);
+	item1.SetAgility(1);
+	item1.SetLuck(2);
+	item1.SetWisdom(0);
+	item1.SetAccuracy(-5);
+	item1.SetAttack(1);
+	item1.SetType("Spear");
+	core::player.inventory.AddItemToInventory(item1);
+
+	Item item2;
+	item2.SetName("Rock of Forgetfulness");
+	item2.SetHp(0);
+	item2.SetAgility(-2);
+	item2.SetLuck(8);
+	item2.SetWisdom(-2);
+	item2.SetAccuracy(-8);
+	item2.SetAttack(-2);
+	item2.SetType("Amulet");
+	core::player.inventory.AddItemToInventory(item2);
+
+	Item item3;
+	item3.SetName("Wooden shield");
+	item3.SetHp(8);
+	item3.SetAgility(-1);
+	item3.SetLuck(0);
+	item3.SetWisdom(0);
+	item3.SetAccuracy(0);
+	item3.SetAttack(-1);
+	item3.SetType("Shield");
+	core::player.inventory.AddItemToInventory(item3);
+
+	Item item4;
+	item4.SetName("Thumb Splatter");
+	item4.SetHp(0);
+	item4.SetAgility(-1);
+	item4.SetLuck(0);
+	item4.SetWisdom(0);
+	item4.SetAccuracy(0);
+	item4.SetAttack(2);
+	item4.SetType("Hammer");
+	core::player.inventory.AddItemToInventory(item4);
+
+	Item item5;
+	item5.SetName("Potion of Hobbler the Experimentalist");
+	item5.SetHp(core::Rand(-5, 5));
+	item5.SetAgility(core::Rand(-5, 5));
+	item5.SetLuck(core::Rand(-5, 5));
+	item5.SetWisdom(core::Rand(-5, 5));
+	item5.SetAccuracy(core::Rand(-5, 5));
+	item5.SetAttack(core::Rand(-5, 5));
+	item5.SetType("Potion");
+	core::player.inventory.AddItemToInventory(item5);
+
+	Item item6;
+	item6.SetName("Helmet of Hungry Weasels");
+	item6.SetHp(0);
+	item6.SetAgility(5);
+	item6.SetLuck(2);
+	item6.SetWisdom(-2);
+	item6.SetAccuracy(-5);
+	item6.SetAttack(1);
+	item6.SetType("Helmet");
+	core::player.inventory.AddItemToInventory(item6);
+
+	Item item7;
+	item7.SetName("Bag of Hurdledoo");
+	item7.SetHp(core::Rand(0, 1));
+	item7.SetAgility(core::Rand(0, 1));
+	item7.SetLuck(core::Rand(0, 1));
+	item7.SetWisdom(core::Rand(-5, 1));
+	item7.SetAccuracy(core::Rand(0, 1));
+	item7.SetAttack(1);
+	item7.SetType("Bag");
+	core::player.inventory.AddItemToInventory(item7);
+
+	Item item8;
+	item8.SetName("Armor of Sluggishness");
+	item8.SetHp(20);
+	item8.SetAgility(-2);
+	item8.SetLuck(0);
+	item8.SetWisdom(0);
+	item8.SetAccuracy(0);
+	item8.SetAttack(0);
+	item8.SetType("Armor");
+	core::player.inventory.AddItemToInventory(item8);
 }
 
 bool ExampleScene::Loop(bool exit)

@@ -351,18 +351,17 @@ void core::EnterInventory()
 				}
 				else
 				{
-					std::cout << "\n\n Items in the inventory";
+					std::cout << "\n\n Items in the inventory: \n";
 					for (unsigned int i = 0; (i + 2) < player.inventory.GetItems().size() && i < 8; ++i)
 					{
-						std::cout << "\nItem:\n"
-							<< "[Name:" + player.inventory.GetItems()[(8 * page) + (2 + i)].GetName() << "]"
-							<< "[Hp : " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetHp()) << "]"
-							<< "[Agi: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetAgility()) << "]"
-							<< "[Lck: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetLuck()) << "]"
-							<< "[Wsd: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetWisdom()) << "]"
-							<< "[Acc: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetAccuracy()) << "]"
-							<< "[Atk: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetAttack()) << "]"
-							<< "[Typ: " + player.inventory.GetItems()[(8 * page) + (2 + i)].GetType() + "]\n";
+					  std::cout << "[Name:" + player.inventory.GetItems()[(8 * page) + (2 + i)].GetName() << "]"
+								<< "[Hp : " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetHp()) << "]"
+								<< "[Agi: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetAgility()) << "]"
+								<< "[Lck: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetLuck()) << "]"
+								<< "[Wsd: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetWisdom()) << "]"
+								<< "[Acc: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetAccuracy()) << "]"
+								<< "[Atk: " + std::to_string(player.inventory.GetItems()[(8 * page) + (2 + i)].GetAttack()) << "]"
+								<< "[Typ: " + player.inventory.GetItems()[(8 * page) + (2 + i)].GetType() + "]\n";
 
 						if (i % 7 == 0)
 						{

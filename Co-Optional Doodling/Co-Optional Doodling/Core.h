@@ -6,6 +6,7 @@
 #include <random>
 #include "SceneManager.h"
 #include "Character.h"
+#include "Item.h"
 
 //used for RNG no need to touch this
 static std::random_device rd;
