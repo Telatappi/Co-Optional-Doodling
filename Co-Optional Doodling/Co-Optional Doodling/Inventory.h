@@ -25,6 +25,7 @@ public:
 	void Equip(std::string itemName, std::string slotName = "");
 	std::vector<Item> GetItems();
 	Item Slot(std::string slotName);
+	void AddItemToInventory(Item item);
 private:
 	Slots m_slots;
 	std::vector<Item> m_items;

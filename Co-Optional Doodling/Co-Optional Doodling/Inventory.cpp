@@ -125,3 +125,8 @@ Item Inventory::Slot(std::string _slotName)
 	}
 	return item;
 }
+
+void Inventory::AddItemToInventory(Item _item)
+{
+	m_items.push_back(_item);
+}
