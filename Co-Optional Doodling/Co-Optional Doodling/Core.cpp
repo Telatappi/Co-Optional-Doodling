@@ -263,8 +263,9 @@ void core::EnterInventory()
 	while (!exit)
 	{
 		//top of the screen
+		system("cls");
 		std::cout <<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
-				  <<"Inventory\n"
+				  <<"               Inventory               \n"
 				  <<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 		switch (depth)
 		{
@@ -333,25 +334,24 @@ void core::EnterInventory()
 						<< "[Atk: " + std::to_string(player.inventory.Slot("misc2").GetAttack()) << "]"
 						<< "[Typ: " + player.inventory.Slot("misc2").GetType() + "]\n";
 
-					std::cout << "\n\n Items in the inventory\n";
-					for (unsigned int i = 0; (i < player.inventory.GetItems().size() && i < 2); ++i)
+					std::cout << "\nItems in the inventory\n";
+					for (unsigned int i = 0; (i < player.inventory.GetItems().size() && i < 5); ++i)
 					{
-						std::cout << "\nItem:\n"
-							<< "[Name:" + player.inventory.GetItems()[i].GetName() << "]"
-							<< "[Hp : " + std::to_string(player.inventory.GetItems()[i].GetHp()) << "]"
-							<< "[Agi: " + std::to_string(player.inventory.GetItems()[i].GetAgility()) << "]"
-							<< "[Lck: " + std::to_string(player.inventory.GetItems()[i].GetLuck()) << "]"
-							<< "[Wsd: " + std::to_string(player.inventory.GetItems()[i].GetWisdom()) << "]"
-							<< "[Acc: " + std::to_string(player.inventory.GetItems()[i].GetAccuracy()) << "]"
-							<< "[Atk: " + std::to_string(player.inventory.GetItems()[i].GetAttack()) << "]"
-							<< "[Typ: " + player.inventory.GetItems()[i].GetType() + "]\n";
+						std::cout <<"[Name:" + player.inventory.GetItems()[i].GetName() << "]"
+								  << "[Hp : " + std::to_string(player.inventory.GetItems()[i].GetHp()) << "]"
+								  << "[Agi: " + std::to_string(player.inventory.GetItems()[i].GetAgility()) << "]"
+								  << "[Lck: " + std::to_string(player.inventory.GetItems()[i].GetLuck()) << "]"
+								  << "[Wsd: " + std::to_string(player.inventory.GetItems()[i].GetWisdom()) << "]"
+								  << "[Acc: " + std::to_string(player.inventory.GetItems()[i].GetAccuracy()) << "]"
+								  << "[Atk: " + std::to_string(player.inventory.GetItems()[i].GetAttack()) << "]"
+								  << "[Typ: " + player.inventory.GetItems()[i].GetType() + "]\n";
 					}
 					std::string text = GetText();
 					++page;
 				}
 				else
 				{
-					std::cout << "\n\n Items in the inventory: \n";
+					std::cout << "\nItems in the inventory: \n";
 					for (unsigned int i = 0; (i + 2) < player.inventory.GetItems().size() && i < 8; ++i)
 					{
 					  std::cout << "[Name:" + player.inventory.GetItems()[(8 * page) + (2 + i)].GetName() << "]"
@@ -366,7 +366,6 @@ void core::EnterInventory()
 						if (i % 7 == 0)
 						{
 							page++;
-
 						}
 					}
 				}
